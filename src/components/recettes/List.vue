@@ -64,7 +64,7 @@
             </h4>
           </div>
           <div class="w-2/3 mt-3">
-            <CardVerticale :recette="getRecettes[getRecettes.length - 1]" />
+            <CardVerticale :recette="getRecettes[0]" />
           </div>
         </div>
       </div>
