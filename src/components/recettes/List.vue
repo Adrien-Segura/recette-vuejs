@@ -98,7 +98,7 @@ export default {
   mounted() {
     checkAuth(this.$store.state, this.$router, this.$route);
     this.$store.state.recettes.sort((a, b) => {
-      return new Date(b.updated_at) - new Date(a.updated_at);
+      return new Date(b.created_at) - new Date(a.created_at);
     });
   },
 };
