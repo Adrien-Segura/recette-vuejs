@@ -61,6 +61,15 @@
             </div>
             <div class="relative" id="ingredients">
               <h3 class="font-medium text-white">Ingrédients</h3>
+
+              <IngredientForm
+                @custom-event-input="changeInputIngredient"
+                v-for="n in numberIngredient"
+                :key="n"
+                :id="n"
+                :name="ingredients[n - 1] ? ingredients[n - 1].name : ''"
+                :quantity="ingredients[n - 1] ? ingredients[n - 1].quantity : 0"
+              />
               <button
                 class="m-1 transition duration-200 hover:bg-blue-800 inline-block w-full p-2 text-sm font-medium text-center text-white bg-blue-700 rounded ease"
                 @click="addIngredients"
@@ -73,14 +82,6 @@
               >
                 Enlever
               </button>
-              <IngredientForm
-                @custom-event-input="changeInputIngredient"
-                v-for="n in numberIngredient"
-                :key="n"
-                :id="n"
-                :name="ingredients[n - 1] ? ingredients[n - 1].name : ''"
-                :quantity="ingredients[n - 1] ? ingredients[n - 1].quantity : 0"
-              />
             </div>
             <div class="relative">
               <button
@@ -149,10 +150,15 @@ export default {
           name: "ShowRecette",
           params: { recetteId: recipe._id },
         });
-      } else {
+      } else if (resp.status === 400) {
         this.typeAlert = "danger";
         this.messageAlert =
           "Impossible de modifier la recette, merci de vérifiér les champs saisis.";
+      } else {
+        localStorage.removeItem("e");
+        localStorage.removeItem("token");
+        localStorage.removeItem("lastUrl");
+        this.$router.push({ name: "Login" });
       }
     },
     addIngredients() {
