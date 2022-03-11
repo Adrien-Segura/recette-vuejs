@@ -124,7 +124,7 @@ export default {
       )[0];
     },
     isMyRecette() {
-      return this.getRecette.user[0].email === this.$store.state.user.email;
+      return this.getRecette.user.email === this.$store.state.user.email;
     },
   },
   methods: {
