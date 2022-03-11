@@ -185,7 +185,7 @@ export default {
 
     const id = this.$route.params.recetteId;
     const recette = this.$store.state.recettes.filter((r) => r._id === id)[0];
-    if (!recette || !checkRecipe(recette.user[0], this.$store.state.user)) {
+    if (!recette || !checkRecipe(recette.user, this.$store.state.user)) {
       this.$router.push({ name: "List" });
     }
     this.title = recette.title;
