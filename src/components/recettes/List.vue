@@ -50,7 +50,7 @@
             :title="recette.title"
             :description="recette.description"
             :id="recette._id"
-            :user="recette.user[0]"
+            :user="recette.user"
             :date="new Date(recette.updated_at)"
           />
         </div>
