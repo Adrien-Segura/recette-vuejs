@@ -91,7 +91,7 @@ export default {
     },
     getMyRecette() {
       return this.$store.state.recettes.filter((r) => {
-        return r.user[0].email === this.$store.state.user.email;
+        return r.user.email === this.$store.state.user.email;
       });
     },
   },
